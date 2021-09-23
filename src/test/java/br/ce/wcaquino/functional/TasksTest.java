@@ -1,19 +1,33 @@
 package br.ce.wcaquino.functional;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class TasksTest {
 
-	public WebDriver acessarAplicacao() {
-		WebDriver driver = new ChromeDriver();
-		//carregar a URL
-		driver.navigate().to("http://localhost:8001/tasks");
+	public WebDriver acessarAplicacao() throws MalformedURLException {
+		// para usar driver local 
+		// WebDriver driver = new ChromeDriver();
+		
+		//para usar driver do selenium grid/remoto
+		Capabilities cap = DesiredCapabilities.chrome(); 
+		WebDriver driver = new RemoteWebDriver(new URL("http://192.168.0.6:4444/wd/hub"), cap);
+		
+			
+		
+		//carregar a URL para testar funcional
+		//carregar o ipconfig e não localhost
+		driver.navigate().to("http://192.168.100.81:8001/tasks");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		return driver;
@@ -22,7 +36,7 @@ public class TasksTest {
 	}
 
 	@Test
-	public void deveSalvarComSucesso() {
+	public void deveSalvarComSucesso() throws MalformedURLException {
 
 		WebDriver driver = acessarAplicacao();
 
@@ -60,7 +74,7 @@ public class TasksTest {
 	}
 
 
-	@Test public void naoDeveSalvarTarefaSemDescricao() {
+	@Test public void naoDeveSalvarTarefaSemDescricao() throws MalformedURLException {
 
 		WebDriver driver = acessarAplicacao();
 
@@ -97,7 +111,7 @@ public class TasksTest {
 
 	}
 
-	@Test public void naoDeveSalvarTarefaComDataPassada() {
+	@Test public void naoDeveSalvarTarefaComDataPassada() throws MalformedURLException {
 
 		WebDriver driver = acessarAplicacao();
 
@@ -135,7 +149,7 @@ public class TasksTest {
 	}
 
 	@Test
-	public void naoSalvarComDataEmBranco() {
+	public void naoSalvarComDataEmBranco() throws MalformedURLException {
 
 		WebDriver driver = acessarAplicacao();
 
