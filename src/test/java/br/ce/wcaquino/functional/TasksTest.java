@@ -27,7 +27,7 @@ public class TasksTest {
 		
 		//carregar a URL para testar funcional
 		//carregar o ipconfig e não localhost
-		driver.navigate().to("http://192.168.100.81:8001/tasks");
+		driver.navigate().to("http://192.168.0.6:8001/tasks");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		return driver;
@@ -58,7 +58,7 @@ public class TasksTest {
 			//clicar botao salvar
 			driver.findElement(By.id("saveButton")).click();
 
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			
 
 			//validar a inclusao message Success!!!
 			String message = driver.findElement(By.id("message")).getText();
