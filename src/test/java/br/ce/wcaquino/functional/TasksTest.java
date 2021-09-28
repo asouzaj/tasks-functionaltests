@@ -28,7 +28,7 @@ public class TasksTest {
 		//carregar a URL para testar funcional
 		//carregar o ipconfig e não localhost
 		driver.navigate().to("http://192.168.0.6:8001/tasks");
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 		return driver;
 
