@@ -53,7 +53,7 @@ public class TasksTest {
 			driver.findElement(By.xpath("//*[@id=\"task\"]")).sendKeys("TAREFA MAIUSCULA 123");
 
 			//entrar data
-			driver.findElement(By.xpath("//*[@id=\"dueDate\"]")).sendKeys("24/10/2021");;
+			driver.findElement(By.xpath("//*[@id=\"dueDate\"]")).sendKeys("24/10/2030");;
 
 			//clicar botao salvar
 			driver.findElement(By.id("saveButton")).click();
